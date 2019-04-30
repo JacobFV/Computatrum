@@ -1,0 +1,6 @@
+{
+    "files.exclude": {
+        "**/desktop.ini": true
+    },
+    "debug.openDebug": "neverOpen"
+}
