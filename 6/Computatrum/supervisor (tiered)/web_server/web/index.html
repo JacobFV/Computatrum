@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Computatrum Supervisor</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Computatrum Supervisor">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+<body>
+
+<script scr="main.js"></script>
+
+<div ng-app="app" ng-controller="Ctrl">
+    <button ng-repeat="c in computatrums" ng-click="selectionChanged(c.id)">{{c.id}}</button>
+    <div id="properties" *ngIf="TODO selected_computatrum">
+        <label>id:</label><span>{{selected_computatrum.id}}</span>
+        <label>state:</label><span>{{selected_computatrum.state}}</span>
+        <label>image:</label><input ng-model="selected_computatrum.image" ng-change="setProperty('image', selected_computatrum.image)"><button ng-click="setProperty('do_save', true)">Save</button>
+        <label>launch script:</label><span>{{selected_computatrum.launch_script}}</span>
+        <label>alive:</label><span>{{selected_computatrum.alive}}</span>
+        <button ng-repeat="state in computatrumStates" ng-click="setProperty('state', state)" [ngClass]="{'down': computatrum.state==state, 'up': computatrum.state!=state}">{{state}}</button>
+        <label>ideal fps:</label><span>{{selected_computatrum.ideal_fps}}</span><input type="range" min=1 max=60 step=1 ng-model="selected_computatrum.ideal_fps" ng-change="setProperty('ideal_fps', selected_computatrum.ideal_fps)">
+        <label>actual fps</label><span>{{selected_computatrum.actual_fps}}</span>
+
+        <div class="button_frame">
+            <button ng-click="setProperty('alive', false)">Shutdown <span id="shutdown_icon">&#x23FB;</span></button>
+        </div>
+    </div>
+    <div id="interface" *ngIf="TODO selected_computatrum">
+        <div id="thumbpad_bottom"><div id="thumbpad_top"></div></div>
+        <div id="button_pad">
+            <button ng-repeat="button in interface_buttons" ng-attr-id="'button'_button" class="interface_button" ng-mousedown="setProperty(interface_button+'_button', true)" ng-mouseup="setProperty(interface_button+'_button', false)">{{interface_button}}</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>

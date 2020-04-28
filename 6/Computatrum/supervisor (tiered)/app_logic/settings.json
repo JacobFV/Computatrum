@@ -1,0 +1,14 @@
+{
+    "base_paths_root": "C:\\Users\\Jacob\\Google Drive\\Projects\\Programming\\DREAM\\5\\Computatrum\\save",
+    "python_command": "py", //python command line keyword: py, py36, python, python37, ...
+    "computatrum_states": [
+        "PAUSED",
+        "GUIDED LEARNING",
+        "ACTIVE LEARNING"
+    ],
+    "interface_buttons": ["A", "B", "C", "D"],
+    "name": {
+        "base": 36,
+        "digits": 4
+    }
+}
